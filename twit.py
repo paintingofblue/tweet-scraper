@@ -59,7 +59,7 @@ while True:
         print("What is the limit you wish to have?")
         limitchoice2 = str(input("Choice: "))
         limit1 = '--max-results ' + limitchoice2 + ' '
-    elif replychoice1 == 2:
+    elif limitchoice1 == 2:
         print("")
         limit1 = ''
 
