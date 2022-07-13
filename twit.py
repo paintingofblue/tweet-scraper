@@ -63,5 +63,6 @@ while True:
         print("")
         limit1 = ''
 
+    os.system(clear)
     os.system('''snscrape ''' + limit1 + progress1 + json1 + '''twitter-search "from:''' + user + reply1 + retweets1 + '''" > tweets/''' + user + json2)
     break
