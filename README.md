@@ -1,4 +1,4 @@
-# tweet-scraper
+# Twitter Scraper
 Python application to scrape tweets with custom parameters
 
 # Installation instructions
