@@ -1,6 +1,6 @@
 import os
 import platform
-
+import pandas as pd
 
 while True:
     sys = platform.system()
@@ -16,7 +16,7 @@ while True:
     print("Do you want the program to output the tweets in json form?\n(1) Yes\n(2) No")
     jsonchoice=int(input("Choice: "))
     if jsonchoice==1:
-        json1='--jsonl'
+        json1='--jsonl '
         json2='-tweets.json'
     elif jsonchoice==2:
         json1=''
@@ -39,6 +39,18 @@ while True:
         retweets1 = 'exclude:retweets'
     
     os.system(clear)
+    print("Do you want a limit on the amount of tweets to scrape?\n(1) Yes\n(2) No")
+    limitchoice1=int(input("Choice: "))
+    if limitchoice1 == 1:
+        os.system(clear)
+        print("What is the limit you wish to have?")
+        limitchoice2 = str(input("Choice: "))
+        limit1 = '--max-results ' + limitchoice2 + ' '
+    elif limitchoice1 == 2:
+        print("")
+        limit1 = ''
+    
+    os.system(clear)
     print("Do you want the program to output progress?\n(1) Yes\n(2) No")
     progresschoice=int(input("Choice: "))
     if progresschoice == 1:
@@ -52,17 +64,8 @@ while True:
         os.system('mkdir tweets')
     
     os.system(clear)
-    print("Do you want a limit on the amount of tweets to scrape?\n(1) Yes\n(2) No")
-    limitchoice1=int(input("Choice: "))
-    if limitchoice1 == 1:
-        os.system(clear)
-        print("What is the limit you wish to have?")
-        limitchoice2 = str(input("Choice: "))
-        limit1 = '--max-results ' + limitchoice2 + ' '
-    elif limitchoice1 == 2:
-        print("")
-        limit1 = ''
-
-    os.system(clear)
     os.system('''snscrape ''' + limit1 + progress1 + json1 + '''twitter-search "from:''' + user + reply1 + retweets1 + '''" > tweets/''' + user + json2)
+    os.system(clear)
+    num_lines = sum(1 for _ in open('tweets/' + user + json2))
+    print("Scraped " + str(num_lines) + " tweets from @" + user)
     break
