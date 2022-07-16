@@ -77,11 +77,12 @@ def image_downloader():
     while True:
         os.system(clear)
         user = input("Enter the user you wish to download media from:\nChoice: ")
-        user = message.lower(user)
 
         if os.path.isdir('images/' + user) == True:
+            os.system(clear)
             print("You seem to have already scraped images from this user.\nDelete the directory and try again.\n\nPress any key to continue.")
             getch()
+            break
         elif os.path.isdir('images/' + user) == False:
             os.system('mkdir -p images/' + user)
         
