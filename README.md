@@ -5,7 +5,7 @@ Python application to scrape tweets with custom parameters. It creates a folder 
 * Tweet scraper
 
 # To-do
-* Include built-in markov generation based off of files
+* Include built-in markov chain generation based off of the file provided to it
 * Media downloader
 
 # Installation instructions
