@@ -1,0 +1,3 @@
+getch
+pandas
+snscrape

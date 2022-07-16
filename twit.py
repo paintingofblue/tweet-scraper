@@ -1,14 +1,15 @@
 import os
 import platform
 import pandas as pd
+from getch import getch
 
-while True:
-    sys = platform.system()
-    if sys == 'Linux' or 'Darwin':
-        clear = 'clear'
-    elif sys == 'Windows':
-        clear = 'cls'
-    
+sys = platform.system()
+if sys == 'Windows':
+    clear = 'cls'
+elif sys == 'Linux' or 'Darwin':
+    clear = 'clear'
+
+def tweet_scraper():
     os.system(clear)
     user = input("Enter the users tweets you want to scrape:\n")
 
@@ -67,5 +68,37 @@ while True:
     os.system('''snscrape ''' + limit1 + progress1 + json1 + '''twitter-search "from:''' + user + reply1 + retweets1 + '''" > tweets/''' + user + json2)
     os.system(clear)
     num_lines = sum(1 for _ in open('tweets/' + user + json2))
-    print("Scraped " + str(num_lines) + " tweets from @" + user)
-    break
+    print("Scraped " + str(num_lines) + " tweets from @" + user + '.\n')
+    print("Press any key to continue.")
+    getch()
+
+def media_downloader():
+    print()
+
+def main():
+    while True:
+        os.system(clear)
+        print("Choose an option:\n(1) Tweet Scraper\n(2) Media Downloader\n(3) Quit")
+        try:
+            choice=int(input("Choice: "))
+            if choice==1:
+                tweet_scraper()
+            elif choice==2:
+                media_downloader()
+            elif choice==3:
+                break
+            else:
+                print("That was an incorrect answer. Press any key to continue")
+                getch()
+                os.system(clear)
+                continue
+            os.system(clear)
+        except:
+            print("That was an incorrect answer. Press any key to continue")
+            getch()
+            os.system(clear)
+            continue
+
+
+if __name__ == '__main__':
+    main()
