@@ -12,4 +12,5 @@ Python application to scrape tweets with custom parameters. It creates a folder 
 Install snscrape & pandas by running the following:
 
 `pip install snscrape`
+
 `pip install pandas`
