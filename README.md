@@ -9,8 +9,6 @@ Python application to scrape tweets with custom parameters. It creates a folder 
 * Media downloader
 
 # Installation instructions
-Install snscrape & pandas by running the following:
+Make sure you're in the proper directory. Install the modules required by running the following:
 
-`pip install snscrape`
-
-`pip install pandas`
+`pip install -r requirements.txt'
