@@ -62,8 +62,8 @@ def tweet_scraper():
     elif os.path.isdir('tweets') == False:
         os.system('mkdir tweets')
     
-    os.system(clear)
     # command for scraping the tweets, utilizes the inputs from above
+    os.system(clear)
     os.system('''snscrape ''' + limit1 + progress1 + json1 + '''twitter-search "from:''' + user + reply1 + retweets1 + '''" > tweets/''' + user + json2)
     os.system(clear)
 
@@ -76,7 +76,7 @@ def tweet_scraper():
 def image_downloader():
     while True:
         os.system(clear)
-        user = input("Enter the user you wish to download media from:\nChoice: ")
+        user = input("Enter the user you wish to download images from:\nChoice: ")
 
         if os.path.isdir('images/' + user) == True:
             os.system(clear)
@@ -89,14 +89,16 @@ def image_downloader():
         os.system(clear)
         print("Scraping images, this may take a while.")
 
+        # code to scrape images from a user
         for tweet in snscrape.modules.twitter.TwitterUserScraper(user, False).get_items():
             if not tweet.media:
                 continue
             for medium in tweet.media:
                 if isinstance(medium, snscrape.modules.twitter.Photo):
                     r = requests.get(medium.fullUrl)
-                    with open('images/' + user + '/' + str(random.randint(0000000000, 9999999999)) + '.jpg', 'wb') as fp:
+                    with open('images/' + user + '/' + str(random.randint(0000000000, 9999999999)) + '.jpg', 'wb') as fp: # opens image with random file name in subfolder
                         fp.write(r.content)
+        
         print("Finished scraping images from " + user + '.\nPress any key to continue')
         getch()
         break
